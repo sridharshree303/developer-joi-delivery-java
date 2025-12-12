@@ -1,6 +1,8 @@
 package com.tw.joi.delivery.controller;
 
+import com.tw.joi.delivery.base.InventoryServiceBase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class InventoryController {
 
 
+    @Autowired
+    private InventoryServiceBase inventoryServiceBase;
+
     @GetMapping("/health")
     public ResponseEntity<Object> fetchStoreInventoryHealth(@RequestParam(name = "storeId") String storeId) {
-        return ResponseEntity.ok(HttpEntity.EMPTY);
+        return ResponseEntity.ok(inventoryServiceBase.getInventoryForStoreID(storeId));
     }
 }
