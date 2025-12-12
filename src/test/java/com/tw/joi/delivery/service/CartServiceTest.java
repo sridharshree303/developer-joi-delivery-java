@@ -88,7 +88,7 @@ public class CartServiceTest {
 
         Assertions.assertNotNull(info);
         Assertions.assertNotNull(info.product());
-        Assertions.assertEquals(null, info.sellingPrice());
+        Assertions.assertNull(info.sellingPrice());
     }
 
     @Test
@@ -124,5 +124,7 @@ public class CartServiceTest {
 
         Assertions.assertNotNull(info);
         Assertions.assertEquals(product, info.product());
+
+        Mockito.verify(userService, Mockito.times(1)).fetchUserById(USERID101);
     }
 }
