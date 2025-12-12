@@ -1,7 +1,6 @@
 package com.tw.joi.delivery.dto.request;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
