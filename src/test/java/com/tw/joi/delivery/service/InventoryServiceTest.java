@@ -4,6 +4,7 @@ import com.tw.joi.delivery.base.InventoryServiceBase;
 import com.tw.joi.delivery.domain.GroceryProduct;
 import com.tw.joi.delivery.domain.GroceryStore;
 import com.tw.joi.delivery.domain.Outlet;
+import com.tw.joi.delivery.dto.response.GroceryStoreInventory;
 import com.tw.joi.delivery.seedData.SeedData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -47,10 +48,10 @@ public class InventoryServiceTest {
                 .filter(data -> data.getStore().getOutletId().equals(storeId)).collect(Collectors.toSet());
         Mockito.when(productService.getProductsByOutletID(storeId)).thenReturn(inventory);
 
-        GroceryStore store = inventoryService.getInventoryForStoreID(storeId);
+        GroceryStoreInventory store = inventoryService.getInventoryForStoreID(storeId);
         Assertions.assertNotNull(store);
-        Assertions.assertEquals(storeId, store.getOutletId());
-        Assertions.assertEquals(inventory, store.getInventory());
+        Assertions.assertEquals(storeId, store.storeId());
+        Assertions.assertEquals(inventory, store.inventory());
 
         Mockito.verify(outletService, Mockito.times(1)).getOutletInfoForOutletID(storeId);
         Mockito.verify(productService, Mockito.times(1)).getProductsByOutletID(storeId);

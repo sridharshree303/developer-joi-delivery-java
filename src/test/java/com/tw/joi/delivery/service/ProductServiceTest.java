@@ -20,7 +20,7 @@ public class ProductServiceTest {
     private ProductService productService;
 
     @Test
-    void fetchListOfProducts_forBlankStoreID(){
+    void fetchListOfProducts_forBlankStoreID() {
         String storeId = "";
 
         Set<GroceryProduct> products = productService.getProductsByOutletID(storeId);
@@ -29,7 +29,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void fetchListOfProducts_forValidOutletID(){
+    void fetchListOfProducts_forValidOutletID() {
         String storeId = "store101";
         Set<GroceryProduct> expected = SeedData.groceryProducts.stream()
                 .filter(data -> data.getStore().getOutletId().equals(storeId)).collect(Collectors.toSet());
@@ -39,10 +39,11 @@ public class ProductServiceTest {
     }
 
     @Test
-    void fetchListOfProducts_forNonExistOutletID(){
+    void fetchListOfProducts_forNonExistOutletID() {
         String storeId = "store103";
         Set<GroceryProduct> expected = SeedData.groceryProducts.stream()
-                .filter(data -> data.getStore().getOutletId().equals(storeId)).collect(Collectors.toSet());
+                .filter(data -> data.getStore().getOutletId().equals(storeId))
+                .collect(Collectors.toSet());
         Set<GroceryProduct> products = productService.getProductsByOutletID(storeId);
 
         Assertions.assertEquals(Set.of(), products);

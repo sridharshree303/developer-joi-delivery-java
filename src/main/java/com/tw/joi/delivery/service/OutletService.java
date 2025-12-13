@@ -13,7 +13,9 @@ public class OutletService {
     private static final List<Outlet> outlets = SeedData.outlets;
 
     public Outlet getOutletInfoForOutletID(String outletId) {
-        return outlets.stream().filter(outlet -> Objects.equals(outlet.getOutletId(), outletId))
-                .findFirst().orElse(null);
+        return outlets.stream()
+                .filter(outlet -> Objects.equals(outlet.getOutletId(), outletId))
+                .findFirst()
+                .orElse(null);
     }
 }

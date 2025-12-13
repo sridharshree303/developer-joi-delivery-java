@@ -26,7 +26,8 @@ public class ProductService {
     }
 
     public Set<GroceryProduct> getProductsByOutletID(String outletID){
-        return products.stream().filter(p -> p.getStore().getOutletId().equals(outletID))
+        return products.stream()
+                .filter(p -> p.getStore().getOutletId().equals(outletID))
                 .collect(Collectors.toSet());
     }
 

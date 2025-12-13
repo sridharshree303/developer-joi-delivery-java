@@ -14,7 +14,7 @@ public class OutletServiceTest {
     private OutletService outletService;
 
     @Test
-    void fetchOutletObject_forBlankParam(){
+    void fetchOutletObject_forBlankParam() {
         String outletId = "";
         Outlet outlet = outletService.getOutletInfoForOutletID(outletId);
 
@@ -22,7 +22,7 @@ public class OutletServiceTest {
     }
 
     @Test
-    void fetchOutletObject_forValidOutletID(){
+    void fetchOutletObject_forValidOutletID() {
         String outletId = "store101";
         String outletName = "Fresh Picks";
 
